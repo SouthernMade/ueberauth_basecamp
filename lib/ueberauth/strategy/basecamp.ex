@@ -118,7 +118,9 @@ defmodule Ueberauth.Strategy.Basecamp do
     user = conn.private.basecamp_user
 
     %Info{
-      name: user["identity"]["name"],
+      first_name: user["identity"]["first_name"],
+      last_name: user["identity"]["last_name"],
+      name: user["identity"]["first_name"] <> user["identity"]["last_name"],
       email: user["identity"]["email_address"]
     }
   end
