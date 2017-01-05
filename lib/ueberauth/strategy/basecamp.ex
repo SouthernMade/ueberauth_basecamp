@@ -50,7 +50,7 @@ defmodule Ueberauth.Strategy.Basecamp do
   Handles the initial redirect to the basecamp authentication page.
   """
   def handle_request!(conn) do
-    opts = [redirect_uri: callback_url(conn), type: 'web_server']
+    opts = [redirect_uri: callback_url(conn), type: "web_server"]
 
     module = option(conn, :oauth2_module)
     redirect!(conn, apply(module, :authorize_url!, [opts]))
