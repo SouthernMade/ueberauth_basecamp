@@ -89,7 +89,7 @@ defmodule Ueberauth.Strategy.Basecamp do
   Fetches the uid field from the Basecamp response. This defaults to the option `uid_field` which in-turn defaults to `id`
   """
   def uid(conn) do
-    conn.private.basecamp_user["identity"][option(conn, :uid_field) |> to_string]
+    conn.private.basecamp_user["identity"]["id"]
   end
 
   @doc """
