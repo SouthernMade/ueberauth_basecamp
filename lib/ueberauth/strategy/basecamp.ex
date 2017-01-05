@@ -139,9 +139,9 @@ defmodule Ueberauth.Strategy.Basecamp do
 
   defp fetch_user(conn, token) do
     conn = put_private(conn, :basecamp_token, token)
-    path = "https://launchpad.37signals.com/authorization.json"
+    path = "/authorization.json"
 
-    oauth_response = OAuth2.AccessToken.get(token, path)
+    oauth_response = Ueberauth.Strategy.Basecamp.OAuth.get(token, path)
 
     case oauth_response do
       {:ok, %OAuth2.Response{status_code: 401, body: _body}} ->
