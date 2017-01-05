@@ -62,7 +62,7 @@ defmodule Ueberauth.Strategy.Basecamp do
   """
   def handle_callback!(%Plug.Conn{ params: %{ "code" => code } } = conn) do
     module = option(conn, :oauth2_module)
-    token = apply(module, :get_token!, [[code: code, type: "web_server"]])
+    token = apply(module, :get_token!, [[code: code, type: "web_server", redirect_uri: callback_url(conn)]])
 
     if token.access_token == nil do
       set_errors!(conn, [error(token.other_params["error"], token.other_params["error_description"])])
