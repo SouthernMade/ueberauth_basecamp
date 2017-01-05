@@ -90,6 +90,7 @@ defmodule Ueberauth.Strategy.Basecamp do
   """
   def uid(conn) do
     conn.private.basecamp_user["identity"][option(conn, :uid_field) |> to_string]
+    |> to_string
   end
 
   @doc """
